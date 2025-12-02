@@ -1,6 +1,21 @@
 import { Search } from "lucide-react";
+import type React from "react";
+import { useContext, useEffect } from "react";
+import { StoreContext } from "../../context/StoreContext";
+
 
 export default function SearchBar() {
+
+  const {searchQuery, setSearchQuery} = useContext(StoreContext);
+
+  const handleSearch = (e: React.MouseEventHandler<HTMLButtonElement>) => {
+      
+  }
+
+  useEffect(() => {
+    console.log(searchQuery)
+  }, [searchQuery])
+
   return (
     <div className="w-full max-w-xl mx-auto relative">
       
@@ -8,6 +23,7 @@ export default function SearchBar() {
       <input
         type="text"
         placeholder="Search"
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
         className="
           w-full
           border border-gray-300 
@@ -27,7 +43,10 @@ export default function SearchBar() {
           text-gray-600
           hover:text-black
           transition
+          
         "
+
+        
       >
         <Search size={18} />
       </button>

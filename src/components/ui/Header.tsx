@@ -3,6 +3,9 @@ import { User, ShoppingCart } from "lucide-react";
 import SearchBar from "./SearchBar";
 
 export default function Header() {
+
+  const cartLength: number = 2
+
   return (
     <nav className="w-full border-b bg-white">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -18,12 +21,22 @@ export default function Header() {
           </Link>
         </div>
 
-        <SearchBar/>
+        <SearchBar />
 
         {/* RIGHT ICONS */}
-        <div className="flex items-center space-x-6">
-          
+        <div className="flex items-center space-x-6 pr-2">
+
           <User className="cursor-pointer hover:text-black/70 transition" size={20} />
+          
+          { cartLength !== 0 &&
+           <div
+            className="absolute right-0 top-0 bg-blue-500 rounded-full"
+          >
+            <label className="p-0.5">{cartLength}</label>
+          </div>
+          }
+
+          
           <ShoppingCart className="cursor-pointer hover:text-black/70 transition" size={20} />
         </div>
 
