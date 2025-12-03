@@ -1,3 +1,5 @@
+
+import { Outlet } from "react-router-dom"
 import CategoryFilter from "../ui/CategoryFilter"
 import ColorFilter from "../ui/ColorFilter"
 import ProductList from "../ui/ProductList"
@@ -6,17 +8,22 @@ export default function Shop() {
 
     return (
         <div
-            className="flex"
+            className=" flex"
         >
 
-
-            <div>
+            
+            <div className="">
                 <CategoryFilter />
                 <ColorFilter />
                 <SizeFilter />
             </div>
+        
+           
             <ProductList />
-
+            
+            
+        
         </div>
+        
     )
 }

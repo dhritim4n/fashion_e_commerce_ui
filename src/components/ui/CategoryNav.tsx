@@ -6,15 +6,15 @@ interface CategoryItem {
 }
 
 const categories: CategoryItem[] = [
-  { label: "Holiday Gifting", href: "/holiday" },
-  { label: "New Arrivals", href: "/new" },
-  { label: "Best-Sellers", href: "/best" },
-  { label: "Clothing", href: "/clothing" },
-  { label: "Tops & Sweaters", href: "/tops" },
-  { label: "Pants & Jeans", href: "/pants" },
-  { label: "Outerwear", href: "/outerwear" },
-  { label: "Shoes & Bags", href: "/shoes" },
-  { label: "Sale", href: "/sale" } // NORMAL item now
+  { label: "Holiday Gifting", href: "shop/holiday" },
+  { label: "New Arrivals", href: "shop/new" },
+  { label: "Best-Sellers", href: "shop/best" },
+  { label: "Clothing", href: "shop/clothing" },
+  { label: "Tops & Sweaters", href: "shop/tops" },
+  { label: "Pants & Jeans", href: "shop/pants" },
+  { label: "Outerwear", href: "shop/outerwear" },
+  { label: "Shoes & Bags", href: "shop/shoes" },
+  { label: "Sale", href: "shop/sale" } // NORMAL item now
 ];
 
 export default function CategoryNav() {

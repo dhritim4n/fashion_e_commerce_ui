@@ -2,14 +2,26 @@ import { Search } from "lucide-react";
 import type React from "react";
 import { useContext, useEffect } from "react";
 import { StoreContext } from "../../context/StoreContext";
+import type { ProductType } from "../../types/ProductType";
 
 
 export default function SearchBar() {
 
-  const {searchQuery, setSearchQuery} = useContext(StoreContext);
+  const {searchQuery, setSearchQuery, products,setProducts, allProducts} = useContext(StoreContext);
 
-  const handleSearch = (e: React.MouseEventHandler<HTMLButtonElement>) => {
-      
+  const handleSearch = () => {
+    
+      if(searchQuery){
+        setSearchQuery(undefined)
+        const searchedProducts = products.filter(
+            (product: ProductType) => {
+              return product.name.toLocaleLowerCase().includes(searchQuery.toLowerCase())
+            }
+        )
+        setProducts(searchedProducts)
+  
+      }
+
   }
 
   useEffect(() => {
@@ -33,9 +45,17 @@ export default function SearchBar() {
           focus:ring-1 focus:ring-black
           transition
         "
+        onKeyDown={(e)=>{
+          if (e.code === 'Enter'){
+              debugger
+              handleSearch()
+          }
+          
+        }}
       />
-
+      
       {/* Search Icon Button */}
+
       <button
         className="
           absolute 
@@ -45,6 +65,7 @@ export default function SearchBar() {
           transition
           
         "
+        onClick={handleSearch}
 
         
       >

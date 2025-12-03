@@ -5,7 +5,7 @@ export type ProductType = {
   price: number;
   salePrice?: number;
   discount?: string;
-  colors: string[];
+  colors: { name: string; hex: string }[];
   tags: string[];
   category: string;
   rating?: number;

@@ -10,7 +10,7 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
     });
     const [searchQuery, setSearchQuery] = useState()
 
-    const [products, setProducts] =  useState<Array<ProductType>>([
+    const allProducts: ProductType[] = [
         {
             id: 1,
             name: "The Wool Flannel Pant",
@@ -19,9 +19,12 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
             price: 138,
             salePrice: 97,
             discount: "30% off",
-            colors: ["#1E1E1E", "#5A654A"], // black, olive-ish
+            colors: [
+                { name: "Black", hex: "#1E1E1E" },
+                { name: "Olive", hex: "#5A654A" }
+            ],
             tags: ["Renewed Materials", "Cleaner Chemistry"],
-            category: "Men",
+            category: "Men"
         },
         {
             id: 2,
@@ -30,9 +33,13 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
                 "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=60",
             price: 79,
             salePrice: 140,
-            colors: ["#FFFFFF", "#1E1E1E", "#2C3E50"], // white, black, navy
+            colors: [
+                { name: "White", hex: "#FFFFFF" },
+                { name: "Black", hex: "#1E1E1E" },
+                { name: "Navy", hex: "#2C3E50" }
+            ],
             tags: ["Organic Cotton"],
-            category: "Men",
+            category: "Men"
         },
         {
             id: 3,
@@ -42,9 +49,12 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
             price: 110,
             salePrice: 89,
             discount: "19% off",
-            colors: ["#2C3E50", "#34495E"], // dark denim variations
+            colors: [
+                { name: "Deep Navy", hex: "#2C3E50" },
+                { name: "Denim Blue", hex: "#34495E" }
+            ],
             tags: ["Cleaner Chemistry"],
-            category: "Men",
+            category: "Men"
         },
         {
             id: 4,
@@ -54,9 +64,13 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
             price: 60,
             salePrice: 49,
             discount: "18% off",
-            colors: ["#BFC3C7", "#1E1E1E", "#A3A3A3"], // grey tones
+            colors: [
+                { name: "Light Grey", hex: "#BFC3C7" },
+                { name: "Black", hex: "#1E1E1E" },
+                { name: "Ash Grey", hex: "#A3A3A3" }
+            ],
             tags: ["Renewed Materials"],
-            category: "Unisex",
+            category: "Unisex"
         },
         {
             id: 5,
@@ -65,11 +79,17 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
                 "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=60",
             price: 95,
             salePrice: 120,
-            colors: ["#1E1E1E", "#37474F"], // black / grey-blue
+            colors: [
+                { name: "Black", hex: "#1E1E1E" },
+                { name: "Steel Blue", hex: "#37474F" }
+            ],
             tags: ["Athletic"],
-            category: "Unisex",
+            category: "Unisex"
         }
-    ]);
+    ]
+
+    const [products, setProducts] = useState<Array<ProductType>>(allProducts);
+
 
 
     const value = {
@@ -78,7 +98,8 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
         products,
         setProducts,
         searchQuery,
-        setSearchQuery
+        setSearchQuery,
+        allProducts
     };
 
     return (

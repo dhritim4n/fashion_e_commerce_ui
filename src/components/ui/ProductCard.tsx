@@ -65,7 +65,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
                     <span
                         key={idx}
                         className="w-4 h-4 rounded-full border"
-                        style={{ backgroundColor: color }}
+                        style={{ backgroundColor: color.hex }}
                     ></span>
                 ))}
             </div>
