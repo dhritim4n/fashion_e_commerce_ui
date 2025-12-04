@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import type { ProductType } from "../types/ProductType";
+import type { CartItemProps } from "../types/CartItemProps";
 
 export const StoreContext = createContext<any>(null);
 
@@ -89,6 +90,10 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
     ]
 
     const [products, setProducts] = useState<Array<ProductType>>(allProducts);
+    const [cart, setCart] = useState<Array<CartItemProps>>([])
+    const [currentProduct, setCurrentProduct] = useState<ProductType>()
+    const [isCartVisible, toggleCartVisible] = useState<boolean>(false)
+
 
 
 
@@ -99,7 +104,13 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
         setProducts,
         searchQuery,
         setSearchQuery,
-        allProducts
+        allProducts,
+        cart,
+        setCart,
+        currentProduct,
+        setCurrentProduct,
+        isCartVisible, 
+        toggleCartVisible
     };
 
     return (

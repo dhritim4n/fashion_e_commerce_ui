@@ -1,9 +1,19 @@
 
 import { Link } from "react-router-dom";
 import type { ProductType } from "../../types/ProductType";
+import { useContext, useEffect } from "react";
+import { StoreContext } from "../../context/StoreContext";
 
 
 const ProductCard = ({ product }: { product: ProductType }) => {
+    const { cart, setCart} = useContext(StoreContext)
+
+    const addToCart = (product: ProductType) => {
+        setCart((prev: ProductType[]) => [...prev, product])
+        console.log(cart)
+    }
+
+
     return (
         <div className="relative border rounded-xl p-3 shadow-sm hover:shadow-md transition bg-white cursor-pointer">
 
@@ -49,7 +59,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
                 </div>
                 <button
                     className="p-2 border rounded"
-                    onClick={(e) => console.log(e)}
+                    onClick={() => addToCart(product)}
                 >
                     Add to Cart
                 </button>

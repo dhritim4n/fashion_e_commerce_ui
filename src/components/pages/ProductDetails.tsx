@@ -7,11 +7,12 @@ import ProductInfo from "../ui/ProductsInfo"
 
 export default function ProductDetails() {
     const { id } = useParams()
-    const { products } = useContext(StoreContext)
+    const { products, currentProduct, setCurrentProduct } = useContext(StoreContext)
     var current_product: ProductType = products.find(
         (product: ProductType) =>
             product.id === Number(id)
     )
+    setCurrentProduct(current_product)
 
 
     return (

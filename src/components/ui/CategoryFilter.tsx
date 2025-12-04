@@ -12,7 +12,7 @@ const categories = [
 
 export default function CategoryFilter() {
   return (
-    <div className="w-64 p-2">
+    <div className="w-full md:w-64 p-2">
       <CategoryFilterItem title="Category" items={categories} />
     </div>
   );

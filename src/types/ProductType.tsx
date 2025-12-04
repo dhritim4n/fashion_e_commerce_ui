@@ -10,5 +10,6 @@ export type ProductType = {
   category: string;
   rating?: number;
   reviews?: number;
+  quantity?: number;
   
 };

@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
-import { User, ShoppingCart } from "lucide-react";
+import { User, ShoppingCart, Store } from "lucide-react";
 import SearchBar from "./SearchBar";
+import { useContext, useState } from "react";
+import { StoreContext } from "../../context/StoreContext";
+import Cart from "./Cart"; 
+
 
 export default function Header() {
 
-  const cartLength: number = 2
+
+
+  const { cart } = useContext(StoreContext)
+  const [isCartVisible, toggleCartVisible] = useState(false)
+
 
   return (
     <nav className="w-full border-b bg-white">
@@ -27,17 +35,33 @@ export default function Header() {
         <div className="flex items-center space-x-6 pr-2">
 
           <User className="cursor-pointer hover:text-black/70 transition" size={20} />
-          
-          { cartLength !== 0 &&
-           <div
-            className="absolute right-0 top-0 bg-blue-500 rounded-full"
-          >
-            <label className="p-0.5">{cartLength}</label>
-          </div>
+
+          {cart.length !== 0 &&
+            <div
+              className="absolute right-0 top-0 transform translate-y-1
+               bg-blue-500 rounded-full 
+               w-5 h-5 flex items-center justify-center 
+               text-white text-xs"
+            >
+
+              <span className="p-0">{cart.length}</span>
+            </div>
           }
 
-          
-          <ShoppingCart className="cursor-pointer hover:text-black/70 transition" size={20} />
+            <span onClick={() =>{
+              toggleCartVisible(true)
+              console.log(isCartVisible)
+              }}>
+            <ShoppingCart className="cursor-pointer hover:text-black/70 transition" size={20} />
+            </span>
+
+            {
+              isCartVisible && 
+                <Cart
+                  isCartVisible={isCartVisible}
+                  toggleCartVisible={toggleCartVisible}
+                />
+            }
         </div>
 
       </div>

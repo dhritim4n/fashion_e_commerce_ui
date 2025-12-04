@@ -8,11 +8,11 @@ export default function Shop() {
 
     return (
         <div
-            className=" flex"
+            className="md:flex "
         >
 
             
-            <div className="">
+            <div className="flex md:flex-col">
                 <CategoryFilter />
                 <ColorFilter />
                 <SizeFilter />
