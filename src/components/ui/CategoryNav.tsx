@@ -20,7 +20,7 @@ const categories: CategoryItem[] = [
 export default function CategoryNav() {
   return (
     <div className="w-full border-b bg-white">
-      <div className="w-[90vw]  px-6  flex overflow-scroll  justify-start gap-2 space-x-10 md:flex-row md:items-center">
+      <div className="w-[90vw]  px-6  flex overflow-scroll  justify-start gap-2 space-x-10 md:flex-row md:items-center md:overflow-hidden">
 
         {categories.map((item) => (
           <NavLink
