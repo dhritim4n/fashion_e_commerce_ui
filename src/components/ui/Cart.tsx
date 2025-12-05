@@ -36,10 +36,9 @@ export default function Cart({isCartVisible, toggleCartVisible}: CartProps) {
                     (cartItem: CartItemProps, index: number) => {
                         return(
                         <CartItemCard 
-                            key={index}
-                            item={cartItem.item}
+                            item = {cartItem.item}
                             quantity={cartItem.quantity}
-                            size={cartItem.size}
+                            size={cart.size}
                             color={cartItem.color}
                         />
                         )
