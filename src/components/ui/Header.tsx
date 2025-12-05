@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { User, ShoppingCart, Store } from "lucide-react";
+import { User, ShoppingCart } from "lucide-react";
 import SearchBar from "./SearchBar";
 import { useContext, useState } from "react";
 import { StoreContext } from "../../context/StoreContext";
@@ -72,18 +72,4 @@ export default function Header() {
   );
 }
 
-interface NavItemProps {
-  label: string;
-  href: string;
-}
 
-function NavItem({ label, href }: NavItemProps) {
-  return (
-    <Link
-      to={href}
-      className="text-sm font-medium hover:text-black transition relative pb-2"
-    >
-      {label}
-    </Link>
-  );
-}

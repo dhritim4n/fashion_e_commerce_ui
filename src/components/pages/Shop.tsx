@@ -1,5 +1,4 @@
 
-import { Outlet } from "react-router-dom"
 import CategoryFilter from "../ui/CategoryFilter"
 import ColorFilter from "../ui/ColorFilter"
 import ProductList from "../ui/ProductList"

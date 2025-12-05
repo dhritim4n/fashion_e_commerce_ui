@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+
 import { Trash2 } from 'lucide-react'; // Delete icon
 import type { CartItemProps } from '../../types/CartItemProps';
 import type { ProductType } from '../../types/ProductType';
 import { StoreContext } from '../../context/StoreContext';
+import { useContext } from 'react';
 
 interface cartItemCardProps{
     item: ProductType;

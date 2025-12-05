@@ -12,7 +12,7 @@ interface CartProps{
 
 export default function Cart({isCartVisible, toggleCartVisible}: CartProps) {
 
-    const { cart, setCart } = useContext(StoreContext)
+    const { cart } = useContext(StoreContext)
 
     return (
         <div
@@ -33,7 +33,7 @@ export default function Cart({isCartVisible, toggleCartVisible}: CartProps) {
             >
             {
                 cart.map(
-                    (cartItem: CartItemProps, index: number) => {
+                    (cartItem: CartItemProps) => {
                         return(
                         <CartItemCard 
                             item = {cartItem.item}

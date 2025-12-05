@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import type { CartItemProps } from "../../types/CartItemProps";
-import type { ProductType } from "../../types/ProductType";
 
 export default function CartSummary() {
-    const { cart, setCart } = useContext(StoreContext)
+    const { cart } = useContext(StoreContext)
     const totalItems: number = cart.length
     const subtotal: number = cart.reduce((sum : number, product: CartItemProps) => {
         return sum+(product.item.salePrice*product.quantity)
