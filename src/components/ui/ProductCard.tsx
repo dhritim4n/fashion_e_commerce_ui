@@ -28,7 +28,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
 
 
     return (
-        <div className="relative border rounded-xl p-3 shadow-sm hover:shadow-md transition h-[500px] bg-white cursor-pointer">
+        <div className="relative border rounded-xl p-3 shadow-sm hover:shadow-md transition h-[440px] bg-white cursor-pointer mid:h-[500px]">
 
             {/* Discount Badge */}
             {product.discount && (
@@ -42,7 +42,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-60 object-cover rounded-lg"
+                className="w-full h-45 object-cover rounded-lg md:h-60"
             />
             </Link>
 

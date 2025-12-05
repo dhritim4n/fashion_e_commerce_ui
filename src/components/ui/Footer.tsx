@@ -5,7 +5,7 @@ export default function Footer() {
         
         {/* Top section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <h2 className="text-lg font-semibold">YourStore</h2>
+          <h2 className="text-lg font-semibold">TR3NDZ</h2>
 
           <nav className="flex gap-6 text-sm">
             <a href="#" className="hover:text-white transition">Home</a>
