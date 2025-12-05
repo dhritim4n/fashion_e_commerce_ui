@@ -1,12 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import hero from "../../assets/hero-image.jpg";
+
 
 const HeroSection: React.FC = () => {
   return (
     <section className="relative rounded-lg p-5 md:h-[700px] w-[1500px] overflow-hidden m-2">
       {/* Background Image */}
       <img
-        src="/src/assets/hero-image.jpg"  // <-- replace with your image path
+        src={hero}  
         alt="Winter Collection"
         className="absolute inset-0 w-full h-full object-cover"
       />
