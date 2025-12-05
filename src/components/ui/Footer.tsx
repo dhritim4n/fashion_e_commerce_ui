@@ -20,7 +20,7 @@ export default function Footer() {
 
         {/* Bottom section */}
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-          <p>© {new Date().getFullYear()} YourStore. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} TR3NDZ. All rights reserved.</p>
 
           <div className="flex gap-4 mt-2 md:mt-0">
             <a href="#" className="hover:text-white transition">Privacy</a>

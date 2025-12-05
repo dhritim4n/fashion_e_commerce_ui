@@ -8,17 +8,19 @@ import type { ProductType } from "../../types/ProductType";
 export default function SearchBar() {
 
   const {searchQuery, setSearchQuery, products,setProducts, allProducts} = useContext(StoreContext);
-
+  
   const handleSearch = () => {
     
       if(searchQuery){
-        setSearchQuery(undefined)
+
+        (document.getElementById('searchbar') as HTMLInputElement).value = ''
         const searchedProducts = products.filter(
             (product: ProductType) => {
               return product.name.toLocaleLowerCase().includes(searchQuery.toLowerCase())
             }
         )
         setProducts(searchedProducts)
+
   
       }
 
@@ -35,6 +37,7 @@ export default function SearchBar() {
       <input
         type="text"
         placeholder="Search"
+        id = "searchbar"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
         className="
           w-full
@@ -62,7 +65,9 @@ export default function SearchBar() {
           text-gray-600
           hover:text-black
           transition
-          
+          hover:bg-black hover:text-white
+          p-2 rounded-r-2xl
+          transform translate-x-2
         "
         onClick={handleSearch}
 

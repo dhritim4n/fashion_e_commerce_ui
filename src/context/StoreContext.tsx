@@ -95,6 +95,7 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
         }
     ]
 
+
     const [products, setProducts] = useState<Array<ProductType>>(allProducts);
     const [cart, setCart] = useState<Array<CartItemProps>>([])
     const [currentProduct, setCurrentProduct] = useState<ProductType>()

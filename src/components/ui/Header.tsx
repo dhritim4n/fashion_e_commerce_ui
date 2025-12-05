@@ -24,7 +24,7 @@ export default function Header() {
         <div className="">
           <Link to="/">
             <h1 className="text-xl p-2 font-bold tracking-wide cursor-pointer">
-              EVERLANE
+              TR3NDZ
             </h1>
           </Link>
         </div>

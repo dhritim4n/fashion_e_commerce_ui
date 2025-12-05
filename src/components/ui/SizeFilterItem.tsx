@@ -52,7 +52,7 @@ const SizeFilterItem: React.FC<SizeFilterProps> = ({ title, categories, onSelect
                     <button
                       key={value}
                       onClick={() => toggleSize(value)}
-                      className={`w-full py-2 text-sm border rounded
+                      className={`w-full py-2 text-sm border rounded hover:bg-black hover:text-white
                         ${isSelected ? "bg-black text-white" : "bg-gray-100 text-black"}
                       `}
                     >

@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import type { ProductType } from "../../types/ProductType";
 import { Star } from "lucide-react";
 import { StoreContext } from "../../context/StoreContext";
+import type { CartItemProps } from "../../types/CartItemProps";
 
 type Props = {
   product: ProductType;
@@ -14,12 +15,21 @@ export default function ProductInfo({ product }: Props) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const { cart, setCart } = useContext(StoreContext)
   const addToCart = (product: ProductType) => {
-        setCart((prev: ProductType[]) => [...prev, {
+        const existingItem = cart.filter(
+            (cartItem: CartItemProps) => cartItem.item === product
+        )
+        if (existingItem.length !== 0){
+            existingItem[0].quantity = existingItem[0].quantity + 1
+        }
+        else {
+            setCart((prev: ProductType[]) => [...prev, {
             item: product,
             quantity: 1,
             size: selectedSize,
-            color: selectedColor
+            color: selectedColor.name
         }])
+        }
+
         console.log(cart)
     }
 
@@ -75,7 +85,7 @@ export default function ProductInfo({ product }: Props) {
             <button
               key={color.hex}
               onClick={() => setSelectedColor(color)}
-              className={`w-8 h-8 rounded-full border-2 transition 
+              className={`w-8 h-8 rounded-full border-2 transition  hover:transform hover:scale-115 
                 ${selectedColor === color ? "border-black" : "border-gray-300"}`}
               style={{ backgroundColor: color.hex }}
             />
@@ -97,7 +107,7 @@ export default function ProductInfo({ product }: Props) {
             <button
               key={size}
               onClick={() => setSelectedSize(size)}
-              className={`py-3 border rounded-md text-sm font-medium transition 
+              className={`py-3 border rounded-md text-sm font-medium transition hover:bg-black hover:text-white 
                 ${selectedSize === size 
                   ? "border-black bg-black text-white" 
                   : "border-gray-300 bg-gray-100 text-gray-700"

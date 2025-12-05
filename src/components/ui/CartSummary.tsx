@@ -7,7 +7,7 @@ export default function CartSummary() {
     const { cart, setCart } = useContext(StoreContext)
     const totalItems: number = cart.length
     const subtotal: number = cart.reduce((sum : number, product: CartItemProps) => {
-        return sum+product.item.salePrice
+        return sum+(product.item.salePrice*product.quantity)
     },0)
 
   return (

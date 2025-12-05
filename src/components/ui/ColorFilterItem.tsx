@@ -43,7 +43,7 @@ const ColorFilterItem: React.FC<ColorFilterProps> = ({
                 className="flex flex-col items-center cursor-pointer"
               >
                 <div
-                  className="w-8 h-8 rounded-full border border-gray-300"
+                  className="w-8 h-8 rounded-full border border-gray-300  hover:transform hover:scale-110"
                   style={{ backgroundColor: color.hex }}
                 />
                 <span className="text-xs mt-2 text-center">{color.name}</span>

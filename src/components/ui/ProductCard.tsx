@@ -3,16 +3,26 @@ import { Link } from "react-router-dom";
 import type { ProductType } from "../../types/ProductType";
 import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
+import type { CartItemProps } from "../../types/CartItemProps";
 
 
 const ProductCard = ({ product }: { product: ProductType }) => {
     const { cart, setCart} = useContext(StoreContext)
 
     const addToCart = (product: ProductType) => {
-        setCart((prev: ProductType[]) => [...prev, {
+        const existingItem = cart.filter(
+            (cartItem: CartItemProps) => cartItem.item === product
+        )
+        if (existingItem.length !== 0){
+            existingItem[0].quantity = existingItem[0].quantity + 1
+        }
+        else {
+            setCart((prev: ProductType[]) => [...prev, {
             item: product,
             quantity: 1,
         }])
+        }
+
         console.log(cart)
     }
 
