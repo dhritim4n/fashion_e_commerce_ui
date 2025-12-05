@@ -1,5 +1,6 @@
 # Fashion E‑Commerce Store UI
 
+Deployed Link: https://fashion-e-commerce-ui.vercel.app/
 A modern, responsive, and minimal e‑commerce web application built using **React**, **Context API**, **Tailwind CSS**, and **React Router**. The project includes product listings, search functionality, a shopping cart drawer, category navigation, and a clean UI inspired by Everlane.
 
 ---
