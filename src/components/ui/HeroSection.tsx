@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative rounded-lg p-5 md:h-[500px] w-[1500px] overflow-hidden m-2">
+    <section className="relative rounded-lg p-5 md:h-[700px] w-[1500px] overflow-hidden m-2">
       {/* Background Image */}
       <img
         src="/src/assets/hero-image.jpg"  // <-- replace with your image path
@@ -15,7 +15,7 @@ const HeroSection: React.FC = () => {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-20 lg:px-32">
+      <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-20 lg:px-32 transition duration-300 ease-in-out">
         <h1 className="text-white text-4xl md:text-6xl font-semibold mb-4">
           Your Cozy Era
         </h1>
@@ -26,7 +26,7 @@ const HeroSection: React.FC = () => {
 
         <NavLink
           to="/shop"
-          className="w-[200px] text-center mt-8 inline-block bg-white text-black font-semibold px-8 py-3 rounded-sm  hover:bg-gray-200 transition"
+          className="w-[200px] text-center mt-8 inline-block bg-white text-black font-semibold px-8 py-3 rounded-sm  hover:bg-black hover:text-white transition"
         >
           SHOP NOW
         </NavLink>

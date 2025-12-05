@@ -16,7 +16,7 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
             id: 1,
             name: "The Wool Flannel Pant",
             image:
-                "https://images.unsplash.com/photo-1586790170083-2f9c7c4b4128?auto=format&fit=crop&w=800&q=60",
+                "https://unsplash.com/photos/three-pairs-of-jeans-are-lined-up-on-a-white-surface-LK5Ud5yRuz4",
             price: 138,
             salePrice: 97,
             discount: "30% off",
@@ -25,22 +25,26 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
                 { name: "Olive", hex: "#5A654A" }
             ],
             tags: ["Renewed Materials", "Cleaner Chemistry"],
-            category: "Men"
+            category: "Men",
+            rating: 4,
+            reviews: 3
         },
         {
             id: 2,
             name: "Relaxed Fit Cotton Shirt",
             image:
                 "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=60",
-            price: 79,
-            salePrice: 140,
+            price: 140,
+            salePrice: 79,
             colors: [
                 { name: "White", hex: "#FFFFFF" },
                 { name: "Black", hex: "#1E1E1E" },
                 { name: "Navy", hex: "#2C3E50" }
             ],
             tags: ["Organic Cotton"],
-            category: "Men"
+            category: "Men",
+            rating: 4,
+            reviews: 3
         },
         {
             id: 3,
@@ -55,7 +59,9 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
                 { name: "Denim Blue", hex: "#34495E" }
             ],
             tags: ["Cleaner Chemistry"],
-            category: "Men"
+            category: "Men",
+            rating: 2,
+            reviews: 7
         },
         {
             id: 4,

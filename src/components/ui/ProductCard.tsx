@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import type { ProductType } from "../../types/ProductType";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 
 
@@ -9,13 +9,16 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     const { cart, setCart} = useContext(StoreContext)
 
     const addToCart = (product: ProductType) => {
-        setCart((prev: ProductType[]) => [...prev, product])
+        setCart((prev: ProductType[]) => [...prev, {
+            item: product,
+            quantity: 1,
+        }])
         console.log(cart)
     }
 
 
     return (
-        <div className="relative border rounded-xl p-3 shadow-sm hover:shadow-md transition bg-white cursor-pointer">
+        <div className="relative border rounded-xl p-3 shadow-sm hover:shadow-md transition h-[500px] bg-white cursor-pointer">
 
             {/* Discount Badge */}
             {product.discount && (
@@ -29,7 +32,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             <img
                 src={product.image}
                 alt={product.name}
-                className="w-full h-72 object-cover rounded-lg"
+                className="w-full h-60 object-cover rounded-lg"
             />
             </Link>
 
@@ -39,7 +42,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             </h3>
 
             {/* Price Section */}
-            <div className="flex w-full justify-between p-0">
+            <div className="flex flex-col m-2 w-full justify-between p-0 md:flex-row">
                 <div className="flex items-center gap-2 mt-1">
                     {product.salePrice ? (
                         <>
@@ -58,7 +61,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
 
                 </div>
                 <button
-                    className="p-2 border rounded"
+                    className="border p-0.5 m-0.5 rounded group hover:bg-black hover:text-white active:transform active:scale-105 md:p-2"
                     onClick={() => addToCart(product)}
                 >
                     Add to Cart

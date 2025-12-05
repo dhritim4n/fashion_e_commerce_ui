@@ -1,11 +1,17 @@
+import { useContext } from "react";
+import { StoreContext } from "../../context/StoreContext";
+import type { CartItemProps } from "../../types/CartItemProps";
+import type { ProductType } from "../../types/ProductType";
 
 export default function CartSummary() {
-
-    const totalItems: number = 2
-    const subtotal: number = 500
+    const { cart, setCart } = useContext(StoreContext)
+    const totalItems: number = cart.length
+    const subtotal: number = cart.reduce((sum : number, product: CartItemProps) => {
+        return sum+product.item.salePrice
+    },0)
 
   return (
-    <div className="w-full mt-6">
+    <div className="w-full mt-6 overflow-auto">
 
       {/* Subtotal Row */}
       <div className="flex justify-between items-center">
@@ -18,7 +24,7 @@ export default function CartSummary() {
       {/* Checkout Button */}
       <button
     
-        className="w-full bg-black text-white text-[14px] tracking-[2px] py-3 mt-5 uppercase hover:bg-gray-900 transition"
+        className="w-full bg-black border text-white text-[14px] tracking-[2px] py-3 mt-5 uppercase hover:text-black hover:bg-white transition"
       >
         Continue to Checkout
       </button>

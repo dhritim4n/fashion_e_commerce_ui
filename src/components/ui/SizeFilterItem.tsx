@@ -28,7 +28,7 @@ const SizeFilterItem: React.FC<SizeFilterProps> = ({ title, categories, onSelect
   };
 
   return (
-    <div className="border px-2 rounded pt-4 pb-4">
+    <div className="border px-2 rounded pt-4 pb-4 w-[350px] md:w-60">
       {/* Title + toggle */}
       <div
         className="flex justify-between items-center cursor-pointer"

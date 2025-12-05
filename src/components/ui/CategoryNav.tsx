@@ -20,7 +20,7 @@ const categories: CategoryItem[] = [
 export default function CategoryNav() {
   return (
     <div className="w-full border-b bg-white">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-center space-x-10">
+      <div className="w-[90vw]  px-6 py-3 flex overflow-scroll  justify-start gap-2 space-x-10 md:flex-row md:items-center">
 
         {categories.map((item) => (
           <NavLink
@@ -28,6 +28,7 @@ export default function CategoryNav() {
             to={item.href}
             className={({ isActive }) =>
               `
+              w-full
               text-sm font-medium transition
               hover:text-black 
               ${isActive ? "text-red-600 font-semibold" : "text-gray-800"}

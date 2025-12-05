@@ -47,7 +47,6 @@ export default function SearchBar() {
         "
         onKeyDown={(e)=>{
           if (e.code === 'Enter'){
-              debugger
               handleSearch()
           }
           

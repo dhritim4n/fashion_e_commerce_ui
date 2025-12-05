@@ -17,7 +17,7 @@ export default function ProductDetails() {
 
     return (
         <div
-            className="flex justify-around m-5 "
+            className="flex flex-col justify-around m-5 md:flex-row"
         >
             <ProductImageCarousel product={current_product} />
             

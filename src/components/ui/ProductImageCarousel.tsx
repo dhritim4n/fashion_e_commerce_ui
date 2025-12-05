@@ -22,7 +22,7 @@ export default function ProductImageCarousel({ product }: CarouselProps) {
     };
 
     return (
-        <div className='relative overflow-hidden rounded-xl h-[600px] w-[400px] p-2 border'>
+        <div className='relative overflow-hidden rounded-xl h-[440px] w-[320px] m-1 p-2 border md:w-[400px] md:h-[540px]'>
             {/* Slides */}
             <div
                 className="flex transition-transform duration-500 ease-out"

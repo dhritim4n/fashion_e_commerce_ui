@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import type { ProductType } from "../../types/ProductType";
 import { Star } from "lucide-react";
+import { StoreContext } from "../../context/StoreContext";
 
 type Props = {
   product: ProductType;
@@ -11,9 +12,19 @@ const sizeOptions = ["XS", "S", "M", "L", "XL", "XXL"];
 export default function ProductInfo({ product }: Props) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const { cart, setCart } = useContext(StoreContext)
+  const addToCart = (product: ProductType) => {
+        setCart((prev: ProductType[]) => [...prev, {
+            item: product,
+            quantity: 1,
+            size: selectedSize,
+            color: selectedColor
+        }])
+        console.log(cart)
+    }
 
   return (
-    <div className="space-y-6 m-5 w-[30vw]">
+    <div className="space-y-6 m-5 md:w-[30vw]">
       
       {/* ---------- Title + Price ---------- */}
       <div className="flex justify-between items-start">
@@ -100,7 +111,8 @@ export default function ProductInfo({ product }: Props) {
 
       {/* ---------- Add to Bag ---------- */}
       <button
-        className="w-full py-4 bg-black text-white text-sm tracking-wider font-semibold rounded-md"
+        onClick={() => addToCart(product)}
+        className="w-full py-4 bg-black border text-white text-sm tracking-wider font-semibold rounded-md hover:bg-white hover:text-black active:transform active:scale-105"
       >
         ADD TO CART
       </button>

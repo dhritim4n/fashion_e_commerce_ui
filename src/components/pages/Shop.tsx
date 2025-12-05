@@ -12,7 +12,7 @@ export default function Shop() {
         >
 
             
-            <div className="flex md:flex-col">
+            <div className="flex flex-col">
                 <CategoryFilter />
                 <ColorFilter />
                 <SizeFilter />

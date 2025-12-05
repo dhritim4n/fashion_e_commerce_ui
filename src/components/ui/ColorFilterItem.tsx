@@ -23,7 +23,7 @@ const ColorFilterItem: React.FC<ColorFilterProps> = ({
   const visibleColors = showAll ? colors : colors.slice(0, defaultVisible);
 
   return (
-    <div className="border rounded px-2 pt-4 pb-4 overflow-hidden">
+    <div className="border rounded px-2 pt-4 pb-4 overflow-hidden w-[350px] md:w-60">
       {/* Header */}
       <div
         className="flex justify-between items-center cursor-pointer"
