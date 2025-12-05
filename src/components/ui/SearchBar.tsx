@@ -7,8 +7,8 @@ import type { ProductType } from "../../types/ProductType";
 
 export default function SearchBar() {
 
-  const {searchQuery, setSearchQuery, products,setProducts, allProducts} = useContext(StoreContext);
-  
+  const {searchQuery, setSearchQuery, products,setProducts} = useContext(StoreContext);
+
   const handleSearch = () => {
     
       if(searchQuery){
