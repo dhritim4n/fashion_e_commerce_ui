@@ -7,7 +7,7 @@ import type { CartItemProps } from "../../types/CartItemProps";
 
 
 const ProductCard = ({ product }: { product: ProductType }) => {
-    const { cart, setCart} = useContext(StoreContext)
+    const { cart, setCart, selectedColor, selectedSize} = useContext(StoreContext)
 
     const addToCart = (product: ProductType) => {
         const existingItem = cart.filter(
@@ -20,11 +20,12 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             setCart((prev: CartItemProps[]) => [...prev, {
             item: product,
             quantity: 1,
-            color: product.colors[0].name
+            color: selectedColor.name,
+            size: selectedSize
         }])
         }
 
-        console.log(cart)
+
     }
 
 

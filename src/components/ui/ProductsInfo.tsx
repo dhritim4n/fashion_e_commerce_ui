@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import type { ProductType } from "../../types/ProductType";
 import { Star } from "lucide-react";
 import { StoreContext } from "../../context/StoreContext";
@@ -11,8 +11,8 @@ type Props = {
 const sizeOptions = ["XS", "S", "M", "L", "XL", "XXL"];
 
 export default function ProductInfo({ product }: Props) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  //const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const {selectedSize, setSelectedSize, selectedColor, setSelectedColor} = useContext(StoreContext)
   const { cart, setCart } = useContext(StoreContext)
   const addToCart = (product: ProductType) => {
         const existingItem = cart.filter(
@@ -30,7 +30,6 @@ export default function ProductInfo({ product }: Props) {
         }])
         }
 
-        console.log(cart)
     }
 
   return (

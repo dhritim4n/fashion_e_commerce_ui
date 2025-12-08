@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { StoreContext } from "../../context/StoreContext";
 
 interface ColorItem {
   id: string;
@@ -19,11 +20,10 @@ const ColorFilterItem: React.FC<ColorFilterProps> = ({
 }) => {
   const [open, setOpen] = useState(true);
   const [showAll, setShowAll] = useState(false);
-
   const visibleColors = showAll ? colors : colors.slice(0, defaultVisible);
 
   return (
-    <div className="border rounded px-2 pt-4 pb-4 overflow-hidden w-[350px] md:w-60">
+    <div className="border rounded px-2 pt-4 pb-4 overflow-hidden  md:w-60">
       {/* Header */}
       <div
         className="flex justify-between items-center cursor-pointer"
@@ -35,15 +35,15 @@ const ColorFilterItem: React.FC<ColorFilterProps> = ({
 
       {/* Color Grid */}
       {open && (
-        <div className="mt-4">
+        <div className="mt-4  border-t pt-4">
           <div className="grid grid-cols-3 gap-y-6">
             {visibleColors.map((color) => (
               <div
                 key={color.id}
-                className="flex flex-col items-center cursor-pointer"
+                className="flex flex-col bg-amber-500 items-center cursor-pointer"
               >
                 <div
-                  className="w-8 h-8 rounded-full border border-gray-300  hover:transform hover:scale-110"
+                  className="w-8 h-8 rounded-full border border-red-300 hover:transform hover:scale-150"
                   style={{ backgroundColor: color.hex }}
                 />
                 <span className="text-xs mt-2 text-center">{color.name}</span>

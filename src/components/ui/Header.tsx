@@ -9,11 +9,12 @@ import Cart from "./Cart";
 export default function Header(){
 
     const [menuOpen, setMenuOpen] = useState(false);
+    const [navVisible, setNavVisible] = useState<boolean>(true)
     const { cart } = useContext(StoreContext)
     const [isCartVisible, toggleCartVisible] = useState<boolean>(false)
 
     return(
-            <header className="bg-white shadow-sm w-full">
+    <header className="sticky top-0 z-50 bg-white shadow-sm w-full bg-fixed">
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Left Section */}
         <div className="flex items-center gap-3">
@@ -63,10 +64,11 @@ export default function Header(){
       </div>
 
       {/* Desktop Nav */}
-      <nav className="hidden md:flex border-t border-gray-200">
+      {navVisible &&     
+      <nav onScroll={() => setNavVisible(false)} className="hidden md:flex border-t border-gray-200">
         <NavCategories />
       </nav>
-
+      }
       {/* Mobile Search + Menu */}
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 p-3">

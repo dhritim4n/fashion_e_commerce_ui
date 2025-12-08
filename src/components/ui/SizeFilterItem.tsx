@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { StoreContext } from "../../context/StoreContext";
 
 interface SizeCategory {
   label: string;
@@ -11,24 +12,14 @@ interface SizeFilterProps {
   onSelect?: (value: string) => void;
 }
 
-const SizeFilterItem: React.FC<SizeFilterProps> = ({ title, categories, onSelect }) => {
+const SizeFilterItem: React.FC<SizeFilterProps> = ({ title, categories }) => {
   const [open, setOpen] = useState(true);
-  const [selected, setSelected] = useState<string[]>([]);
+  const { selectedSize, setSelectedSize } = useContext(StoreContext)
 
-  const toggleSize = (value: string) => {
-    let newSelection;
-    if (selected.includes(value)) {
-      newSelection = selected.filter((v) => v !== value);
-    } else {
-      newSelection = [...selected, value];
-    }
 
-    setSelected(newSelection);
-    onSelect?.(value);
-  };
 
   return (
-    <div className="border px-2 rounded pt-4 pb-4 w-[350px] md:w-60">
+    <div className="border px-2 rounded pt-4 pb-4 w-[88vw] md:w-60">
       {/* Title + toggle */}
       <div
         className="flex justify-between items-center cursor-pointer"
@@ -40,18 +31,18 @@ const SizeFilterItem: React.FC<SizeFilterProps> = ({ title, categories, onSelect
 
       {/* Content */}
       {open && (
-        <div className="mt-4 space-y-6">
+        <div className="mt-4 space-y-6  border-t pt-2">
           {categories.map((cat) => (
             <div key={cat.label}>
               <p className="text-sm font-medium mb-3">{cat.label}</p>
 
               <div className="grid grid-cols-4 gap-3">
                 {cat.values.map((value) => {
-                  const isSelected = selected.includes(value);
+                  const isSelected = selectedSize === value;
                   return (
                     <button
                       key={value}
-                      onClick={() => toggleSize(value)}
+                      onClick={() => setSelectedSize(value)}
                       className={`w-full py-2 text-sm border rounded hover:bg-black hover:text-white
                         ${isSelected ? "bg-black text-white" : "bg-gray-100 text-black"}
                       `}

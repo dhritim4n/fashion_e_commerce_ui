@@ -25,7 +25,7 @@ const CategoryFilterItem: React.FC<CategoryFilterProps> = ({
     <div className="border rounded px-2 pt-4 pb-2">
       {/* Header */}
       <div
-        className="flex justify-between items-center cursor-pointer"
+        className="flex justify-between items-center cursor-pointer "
         onClick={() => setOpen(!open)}
       >
         <h3 className="font-semibold text-lg">{title}</h3>
@@ -34,7 +34,7 @@ const CategoryFilterItem: React.FC<CategoryFilterProps> = ({
 
       {/* Checkbox list */}
       {open && (
-        <div className="mt-3 space-y-3">
+        <div className="mt-3 space-y-3 border-t pt-2">
           {visibleItems.map((item) => (
             <label key={item.id} className="flex items-start gap-2">
               <input

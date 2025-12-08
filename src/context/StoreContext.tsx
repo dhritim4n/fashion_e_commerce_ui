@@ -95,12 +95,16 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
         }
     ]
 
-
+    interface color{
+        name: string;
+        hex: string;
+    }
     const [products, setProducts] = useState<Array<ProductType>>(allProducts);
     const [cart, setCart] = useState<Array<CartItemProps>>([])
     const [currentProduct, setCurrentProduct] = useState<ProductType>()
     const [isCartVisible, toggleCartVisible] = useState<boolean>(false)
-
+    const [selectedSize, setSelectedSize] = useState<string>('M')
+    const [selectedColor, setSelectedColor] = useState<color>({ name: "Black", hex: "#1E1E1E" })
 
 
 
@@ -117,7 +121,11 @@ export function StoreContextProvider({ children }: React.PropsWithChildren) {
         currentProduct,
         setCurrentProduct,
         isCartVisible, 
-        toggleCartVisible
+        toggleCartVisible,
+        selectedSize,
+        setSelectedSize,
+        selectedColor,
+        setSelectedColor
     };
 
     return (
