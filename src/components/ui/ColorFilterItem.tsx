@@ -40,10 +40,10 @@ const ColorFilterItem: React.FC<ColorFilterProps> = ({
             {visibleColors.map((color) => (
               <div
                 key={color.id}
-                className="flex flex-col bg-amber-500 items-center cursor-pointer"
+                className="flex flex-col items-center cursor-pointer"
               >
                 <div
-                  className="w-8 h-8 rounded-full border border-red-300 hover:transform hover:scale-150"
+                  className="w-8 h-8 rounded-full border border-gray-300 hover:transform hover:scale-150"
                   style={{ backgroundColor: color.hex }}
                 />
                 <span className="text-xs mt-2 text-center">{color.name}</span>
