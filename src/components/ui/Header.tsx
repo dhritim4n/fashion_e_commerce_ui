@@ -1,75 +1,86 @@
-import { Link } from "react-router-dom";
-import { User, ShoppingCart } from "lucide-react";
-import SearchBar from "./SearchBar";
 import { useContext, useState } from "react";
+import { Menu, X, ShoppingCart, User } from "lucide-react";
+import SearchBox from "./SearchBox";
+import { Link } from "react-router-dom";
 import { StoreContext } from "../../context/StoreContext";
+import NavCategories from "./NavCategories";
 import Cart from "./Cart";
 
+export default function Header(){
 
-export default function Header() {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const { cart } = useContext(StoreContext)
+    const [isCartVisible, toggleCartVisible] = useState<boolean>(false)
 
+    return(
+            <header className="bg-white shadow-sm w-full">
+      <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        {/* Left Section */}
+        <div className="flex items-center gap-3">
+          {/* Mobile Menu Button */}
+          
+          <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
 
+          {/* Logo */}
+          <div className="flex items-center">
 
-  const { cart } = useContext(StoreContext)
-  const [isCartVisible, toggleCartVisible] = useState(false)
-
-
-  return (
-    <nav className="w-full border-b bg-white">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-
-
-
-        {/* CENTER LOGO */}
-        <div className="">
-          <Link to="/">
-            <h1 className="text-xl p-2 font-bold tracking-wide cursor-pointer">
-              TR3NDZ
-            </h1>
-          </Link>
+            <Link to="/">
+            <span className="font-semibold text-sm ml-2 tracking-wide">
+              TR3NDS
+            </span>
+            </Link>
+          </div>
         </div>
 
-        <SearchBar />
+        {/* Desktop Search */}
+        <div className="hidden md:flex flex-1 mx-6">
+          <SearchBox placeholder="What are you looking for?" />
+        </div>
 
-        {/* RIGHT ICONS */}
-        <div className="flex items-center space-x-6 pr-2">
-
-          <User className="cursor-pointer hover:text-black/70 transition" size={20} />
-
-
-
-          <span
-            className="hover:bg-black group rounded-lg relative"
-            onClick={() => {
-              toggleCartVisible(true)
-              console.log(isCartVisible)
-            }}>
-            <ShoppingCart className="cursor-pointer m-0.5 group-hover:text-white transition" size={20} />
-            {cart.length !== 0 &&
-              <div
-                className="absolute -right-3 -top-4 transform translate-y-1
-               bg-blue-500 rounded-full 
-               w-5 h-5 flex items-center justify-center 
-               text-white text-xs"
-              >
-
-                <span className="p-0">{cart.length}</span>
-              </div>
+        {/* Right Icons */}
+        <div className="flex items-center gap-4 relative">
+          <User className="cursor-pointer" />
+         
+          <button
+            onClick={
+              () => toggleCartVisible(!isCartVisible)
             }
-          </span>
-
-          {
-            isCartVisible &&
-            <Cart
-              isCartVisible={isCartVisible}
-              toggleCartVisible={toggleCartVisible}
-            />
-          }
+          >
+          <ShoppingCart className="cursor-pointer rounded-lg m-2 hover:text-blue-600"  />
+          </button>
+          
+          {cart.length > 0 && (
+            <span
+              className="absolute -top-1.5 -right-2 bg-blue-500 text-white text-xs font-bold
+                     rounded-full w-5 h-5 flex items-center justify-center"
+            >
+              {cart.length}
+            </span>
+          )}
         </div>
-
       </div>
-    </nav>
-  );
+
+      {/* Desktop Nav */}
+      <nav className="hidden md:flex border-t border-gray-200">
+        <NavCategories />
+      </nav>
+
+      {/* Mobile Search + Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200 p-3">
+          <SearchBox placeholder="What are you looking for?" className="mb-3" />
+          <NavCategories isMobile />
+        </div>
+      )}
+
+      {isCartVisible && 
+        <Cart
+          isCartVisible={isCartVisible}
+          toggleCartVisible={toggleCartVisible}
+        />
+      }
+    </header>
+    )
 }
-
-

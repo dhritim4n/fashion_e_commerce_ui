@@ -4,6 +4,7 @@ import type { ProductType } from "../../types/ProductType";
 import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import type { CartItemProps } from "../../types/CartItemProps";
+import ColorFilter from "./ColorFilter";
 
 
 const ProductCard = ({ product }: { product: ProductType }) => {
@@ -17,9 +18,10 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             existingItem[0].quantity = existingItem[0].quantity + 1
         }
         else {
-            setCart((prev: ProductType[]) => [...prev, {
+            setCart((prev: CartItemProps[]) => [...prev, {
             item: product,
             quantity: 1,
+            color: product.colors[0].name
         }])
         }
 

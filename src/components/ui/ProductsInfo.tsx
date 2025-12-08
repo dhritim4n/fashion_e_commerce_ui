@@ -22,7 +22,7 @@ export default function ProductInfo({ product }: Props) {
             existingItem[0].quantity = existingItem[0].quantity + 1
         }
         else {
-            setCart((prev: ProductType[]) => [...prev, {
+            setCart((prev: CartItemProps[]) => [...prev, {
             item: product,
             quantity: 1,
             size: selectedSize,
