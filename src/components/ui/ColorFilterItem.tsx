@@ -1,5 +1,4 @@
-import React, { useContext, useState } from "react";
-import { StoreContext } from "../../context/StoreContext";
+import React, {  useState } from "react";
 
 interface ColorItem {
   id: string;
