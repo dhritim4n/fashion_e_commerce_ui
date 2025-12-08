@@ -4,7 +4,6 @@ import type { ProductType } from "../../types/ProductType";
 import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import type { CartItemProps } from "../../types/CartItemProps";
-import ColorFilter from "./ColorFilter";
 
 
 const ProductCard = ({ product }: { product: ProductType }) => {

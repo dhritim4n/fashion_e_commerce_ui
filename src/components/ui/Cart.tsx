@@ -16,7 +16,7 @@ export default function Cart({isCartVisible, toggleCartVisible}: CartProps) {
 
     return (
         <div
-            className="p-4 border rounded-lg fixed top-2 right-3  bg-white h-[100vh] w-[90vw]    z-50 md:transform  md:w-[500px] "
+            className="p-4 border rounded-lg fixed top-2 right-3  bg-white h-screen w-[90vw]    z-50 md:transform  md:w-[500px] "
         >
             <button 
             onClick={() => toggleCartVisible(!isCartVisible)}
