@@ -5,7 +5,7 @@ import hero from "../../assets/hero-image.jpg";
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative rounded-lg p-5 md:h-[700px] w-[1500px] overflow-hidden m-2">
+    <section className="relative h-[500px] rounded-lg p-5 md:h-[500px] w-[1500px] overflow-hidden m-2">
       {/* Background Image */}
       <img
         src={hero}  

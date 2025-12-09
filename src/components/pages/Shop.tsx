@@ -44,7 +44,7 @@ export default function Shop() {
     )
     return (
         <div
-            className="md:flex "
+            className="min-h-[100vh] md:flex "
         >
             
             <div className="hidden flex-col md:flex">
