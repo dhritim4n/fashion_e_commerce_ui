@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { StoreContext } from "../../context/StoreContext";
+import type { ProductType } from "../../types/ProductType";
 
 export interface CategoryItem {
   id: string;
@@ -11,6 +13,9 @@ interface CategoryFilterProps {
   defaultVisible?: number;   // how many items to show initially
 }
 
+
+
+
 const CategoryFilterItem: React.FC<CategoryFilterProps> = ({
   title,
   items,
@@ -18,6 +23,35 @@ const CategoryFilterItem: React.FC<CategoryFilterProps> = ({
 }) => {
   const [open, setOpen] = useState(true);
   const [showAll, setShowAll] = useState(false);
+  type CheckboxState = {
+    [key: string]: boolean;
+  };
+
+  const [checkboxChecked, setCheckboxChecked] = useState<CheckboxState>(() =>
+    items.reduce((acc, item) => ({ ...acc, [item.label]: false }), {})
+  );
+
+
+  const { allProducts, setProducts } = useContext(StoreContext)
+
+  useEffect(() => {
+    // Type assertion so TS knows checkboxChecked has string keys with boolean values
+    const activeCategories = Object.keys(checkboxChecked).filter(
+      (category: string) => checkboxChecked[category]
+    );
+
+    if (activeCategories.length === 0) {
+      setProducts(allProducts);
+      return;
+    }
+
+    const filteredProducts = allProducts.filter((product: ProductType) =>
+      activeCategories.includes(product.category)
+    );
+
+    setProducts(filteredProducts);
+  }, [checkboxChecked]);
+
 
   const visibleItems = showAll ? items : items.slice(0, defaultVisible);
 
@@ -40,6 +74,13 @@ const CategoryFilterItem: React.FC<CategoryFilterProps> = ({
               <input
                 type="checkbox"
                 className="w-4 h-4 border-gray-400 cursor-pointer"
+                onClick={() => {
+                  setCheckboxChecked((prevState: CheckboxState) => ({
+                    ...prevState,
+                    [item.label]: !prevState[item.label]
+                  }));
+                }}
+
               />
               <span className="text-sm">{item.label}</span>
             </label>

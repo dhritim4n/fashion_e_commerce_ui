@@ -8,7 +8,7 @@ export default function ProductList() {
     const { products } = useContext(StoreContext)
 
     return (
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 p-4 bg-gray-100 rounded-md">
+        <div className="grid grid-cols-2 w-full m-3 md:grid-cols-3 gap-4 p-2 bg-gray-100 rounded-md">
             {
                 products.map((p: ProductType) => (
                     

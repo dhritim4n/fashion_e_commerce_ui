@@ -11,16 +11,15 @@ export default function SearchBox({ placeholder = "Search...", className = "" })
  const handleSearch = () => {
     
       if(searchQuery){
-
-        
         const searchedProducts = allProducts.filter(
             (product: ProductType) => {
               return product.name.toLocaleLowerCase().includes(searchQuery.toLowerCase())
             }
         )
         setProducts(searchedProducts)
-
-  
+      }
+      else{
+        setProducts(allProducts)
       }
 
   }
@@ -40,14 +39,17 @@ export default function SearchBox({ placeholder = "Search...", className = "" })
 
         className="w-full border border-gray-300 rounded-full pl-4 pr-10 py-2 focus:outline-none focus:ring-1 focus:ring-gray-400"
       />
-      <X className="absolute right-9 top-2.5 text-gray-500 hover:text-blue-600" size={19}
-      onClick={()=>{
-        (document.getElementById('searchbar') as HTMLInputElement).value = ''
-        //setSearchQuery(undefined)
+      <button
+        onClick={()=>{
+        (document.getElementById('searchbox') as HTMLInputElement).value = ''
+        setSearchQuery(undefined)
 
       }}
+      >
+      <X className="absolute right-9 top-2.5 text-gray-500 hover:text-blue-600" size={19}
       />
-      <Search className="absolute right-3 top-2.5 text-gray-500 hover:text-blue-600" size={18}
+      </button>
+      <Search className="absolute right-3 top-2.5 text-gray-500  hover:text-blue-600" size={18}
         onClick={handleSearch}
       />
     </div>

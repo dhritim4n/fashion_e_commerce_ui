@@ -85,16 +85,34 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             </div>
 
             {/* Colors */}
+
             <div className="flex items-center gap-2 mt-3">
+                
                 {product.colors.map((color, idx) => (
-                    <span
+                    <div
                         key={idx}
                         className="w-4 h-4 rounded-full border"
                         style={{ backgroundColor: color.hex }}
-                    ></span>
+                    ></div>
                 ))}
+                <div
+                    className="flex   border w-[50px] overflow-hidden rounded-sm gap-2 px-0.5 "
+                >
+                {
+                    product.size?.map(
+                        (size, index) => (
+                            <span
+                                key={index}
+                                className="text-[10px] text-ellipsis"
+                            >
+                                {size}
+                            </span>
+                        )
+                    )
+                }
+                </div>
             </div>
-
+    
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mt-3">
                 {product.tags.map((tag, idx) => (

@@ -9,7 +9,7 @@ import Cart from "./Cart";
 export default function Header(){
 
     const [menuOpen, setMenuOpen] = useState(false);
-    const [navVisible, setNavVisible] = useState<boolean>(true)
+    const [navVisible] = useState<boolean>(true)
     const { cart } = useContext(StoreContext)
     const [isCartVisible, toggleCartVisible] = useState<boolean>(false)
 
@@ -65,7 +65,7 @@ export default function Header(){
 
       {/* Desktop Nav */}
       {navVisible &&     
-      <nav onScroll={() => setNavVisible(false)} className="hidden md:flex border-t border-gray-200">
+      <nav  className="hidden md:flex border-t border-gray-200">
         <NavCategories />
       </nav>
       }

@@ -1,4 +1,6 @@
-import React, {  useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { StoreContext } from "../../context/StoreContext";
+import type { ProductType } from "../../types/ProductType";
 
 interface ColorItem {
   id: string;
@@ -20,6 +22,21 @@ const ColorFilterItem: React.FC<ColorFilterProps> = ({
   const [open, setOpen] = useState(true);
   const [showAll, setShowAll] = useState(false);
   const visibleColors = showAll ? colors : colors.slice(0, defaultVisible);
+  const { allProducts, setProducts, selectedColor, setSelectedColor } = useContext(StoreContext)
+
+  useEffect(
+    () => {
+
+      const filteredProducts = allProducts.filter((product: ProductType) =>
+        product.colors.some(
+          (color) =>
+            color.name === selectedColor.name && color.hex === selectedColor.hex
+        )
+      );
+
+      setProducts(filteredProducts)
+    }, [selectedColor]
+  )
 
   return (
     <div className="border rounded px-2 pt-4 pb-4 overflow-hidden  md:w-60">
@@ -40,12 +57,23 @@ const ColorFilterItem: React.FC<ColorFilterProps> = ({
               <div
                 key={color.id}
                 className="flex flex-col items-center cursor-pointer"
+
               >
-                <div
-                  className="w-8 h-8 rounded-full border border-gray-300 hover:transform hover:scale-150"
-                  style={{ backgroundColor: color.hex }}
-                />
-                <span className="text-xs mt-2 text-center">{color.name}</span>
+                <button
+                  onClick={() => setSelectedColor(color)}
+                >
+
+
+                  <div
+                    className={`w-8 h-8 rounded-full border ${selectedColor === color ? "border-black" : "border-gray-300"} hover:transform hover:scale-120`}
+                    style={{ backgroundColor: color.hex }}
+                  />
+                  <div
+                    className={`text-xs mt-2 flex w-10 flex-wrap justify-center ${selectedColor === color ? "border rounded-md" : "text-black"}  whitespace-normal`}>
+                    {color.name}
+                  </div>
+
+                </button>
               </div>
             ))}
           </div>

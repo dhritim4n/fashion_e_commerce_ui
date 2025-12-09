@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import type { ProductType } from "../../types/ProductType";
 import { Star } from "lucide-react";
 import { StoreContext } from "../../context/StoreContext";
@@ -8,7 +8,7 @@ type Props = {
   product: ProductType;
 };
 
-const sizeOptions = ["XS", "S", "M", "L", "XL", "XXL"];
+
 
 export default function ProductInfo({ product }: Props) {
   //const [selectedColor, setSelectedColor] = useState(product.colors[0]);
@@ -20,6 +20,8 @@ export default function ProductInfo({ product }: Props) {
         )
         if (existingItem.length !== 0){
             existingItem[0].quantity = existingItem[0].quantity + 1
+            existingItem[0].size = selectedSize
+            existingItem[0].color = selectedColor.name 
         }
         else {
             setCart((prev: CartItemProps[]) => [...prev, {
@@ -30,7 +32,14 @@ export default function ProductInfo({ product }: Props) {
         }])
         }
 
-    }
+    };
+  
+  useEffect(
+    () => {
+      setSelectedColor(product.colors[0])
+      setSelectedSize(product.size?.[0])
+    }, []
+  );
 
   return (
     <div className="space-y-6 m-5 md:w-[30vw]">
@@ -102,7 +111,7 @@ export default function ProductInfo({ product }: Props) {
         </div>
 
         <div className="grid grid-cols-3 gap-3">
-          {sizeOptions.map((size) => (
+          {product.size?.map((size) => (
             <button
               key={size}
               onClick={() => setSelectedSize(size)}

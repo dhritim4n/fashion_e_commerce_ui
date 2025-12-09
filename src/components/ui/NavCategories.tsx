@@ -11,15 +11,11 @@ export default function NavCategories({ isMobile = false }) {
   //const categories = ["All","Shoes", "Clothing", "Supplements", "Electronics", "Home", "Beauty"]
   const {setSearchQuery} = useContext(StoreContext)
   const categories: CategoryItem[] = [
-  { label: "Holiday Gifting", href: "shop/holiday" },
+  { label: "All Products", href: "shop/all" },
   { label: "New Arrivals", href: "shop/new" },
-  { label: "Best-Sellers", href: "shop/best" },
-  { label: "Clothing", href: "shop/clothing" },
-  { label: "Tops & Sweaters", href: "shop/tops" },
-  { label: "Pants & Jeans", href: "shop/pants" },
-  { label: "Outerwear", href: "shop/outerwear" },
-  { label: "Shoes & Bags", href: "shop/shoes" },
-  { label: "Sale", href: "shop/sale" } // NORMAL item now
+  { label: "Popular", href: "shop/popular" },
+  { label: "Discount", href: "shop/discount" },
+  { label: "Sale", href: "shop/sale" }
 ];
 
   return (

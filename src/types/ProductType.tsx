@@ -11,5 +11,6 @@ export type ProductType = {
   rating?: number;
   reviews?: number;
   quantity?: number;
-  
+  properties? : string[];
+  size? : string[];
 };

@@ -1,5 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StoreContext } from "../../context/StoreContext";
+import type { ProductType } from "../../types/ProductType";
 
 interface SizeCategory {
   label: string;
@@ -14,8 +15,16 @@ interface SizeFilterProps {
 
 const SizeFilterItem: React.FC<SizeFilterProps> = ({ title, categories }) => {
   const [open, setOpen] = useState(true);
-  const { selectedSize, setSelectedSize } = useContext(StoreContext)
+  const { selectedSize, setSelectedSize, allProducts, setProducts } = useContext(StoreContext)
 
+  useEffect(
+    () => {
+      const filterProducts = allProducts.filter(
+        (product: ProductType) => product.size?.includes(selectedSize)
+      )
+      setProducts(filterProducts)
+    }, [selectedSize]
+  )
 
 
   return (
