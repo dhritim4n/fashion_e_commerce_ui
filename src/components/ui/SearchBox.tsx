@@ -3,14 +3,20 @@ import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import { X } from "lucide-react";
 import type { ProductType } from "../../types/ProductType";
+import { useLocation, matchPath } from "react-router-dom";
+
 
 export default function SearchBox({ placeholder = "Search...", className = "" }) {
 
   const { searchQuery, setSearchQuery, allProducts, setProducts } = useContext(StoreContext)
-
+  const location = useLocation();
+  const isHeroPage = location.pathname === "/"
+  const isProductPage = matchPath("/product/:id", location.pathname) !== null;
+  
  const handleSearch = () => {
-    
+      
       if(searchQuery){
+        
         const searchedProducts = allProducts.filter(
             (product: ProductType) => {
               return product.name.toLocaleLowerCase().includes(searchQuery.toLowerCase())
@@ -23,7 +29,16 @@ export default function SearchBox({ placeholder = "Search...", className = "" })
       }
 
   }
+
+  if(isHeroPage || isProductPage){
+    return(
+      <></>
+    )
+  }
+  
   return (
+
+    
     <div className={`relative w-full ${className}`}>
       <input
         type="text"
@@ -49,9 +64,14 @@ export default function SearchBox({ placeholder = "Search...", className = "" })
       <X className="absolute right-9 top-2.5 text-gray-500 hover:text-blue-600" size={19}
       />
       </button>
+      <button
+        onClick={() => handleSearch()}
+      >
       <Search className="absolute right-3 top-2.5 text-gray-500  hover:text-blue-600" size={18}
-        onClick={handleSearch}
       />
+      </button>
     </div>
+  
   );
+
 }

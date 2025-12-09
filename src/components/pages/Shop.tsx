@@ -11,7 +11,7 @@ import type { ProductType } from "../../types/ProductType"
 export default function Shop() {
 
     const {category} = useParams()
-    const { allProducts, setProducts} = useContext(StoreContext)
+    const { allProducts, setProducts} =  useContext(StoreContext)
     useEffect(
         () => {
 

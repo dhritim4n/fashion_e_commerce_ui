@@ -28,7 +28,7 @@ export default function Header(){
           <div className="flex items-center">
 
             <Link to="/">
-            <span className="font-semibold text-sm ml-2 tracking-wide">
+            <span className="font-semibold text-xl ml-2 tracking-wide">
               TR3NDS
             </span>
             </Link>

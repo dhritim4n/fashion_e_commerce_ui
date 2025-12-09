@@ -48,7 +48,7 @@ src/
 ├── components/
 │   ├── Header/
 │   │   ├── Header.tsx
-│   │   ├── SearchBar.tsx
+│   │   ├── .tsx
 │   │   └── Cart.tsx
 │   ├── ProductCard.tsx
 │   └── ...
